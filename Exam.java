@@ -58,6 +58,10 @@ public class Runner {
 	// output: true if the given number is a palindrome, false otherwise 
 	public static boolean isPalindrome(int number)
 	{
+		// we first check if the number is 0 because the fucntion fits integers >= 1
+		if (number == 0) 
+			return true;
+		
 		int numOfDigits = 0;
 		// creating a temporary variable to store number so we don't lose its value when computing number of digits
 		int temp = number; 
@@ -68,22 +72,22 @@ public class Runner {
 			numOfDigits++;
 			temp/=10;
 		}
-		int[] digitsArray = new int[numOfDigits];
 		
-		// fill the array with the number's digits from right to left,
-		// since we check couples for palindrome the order does not matter
-		for (int i = 0; i < digitsArray.length; i++)
-		{
-			digitsArray[i] = number%10;
-			number/=10;
-		}
+		int digit1, digit2; // couple of digits to compare
 		
-		//compare each corresponding couple of digits (total num of iterations is half the number's length)
-		// if the number length is odd, then the middle digit is compared to nothing 
-		for (int i = 0; i < digitsArray.length/2; i++)
+		// powers of 10 to divide the number from both ends 
+		int smallTenPower=1, bigTenPower = (int) Math.pow(10, numOfDigits-1); 
+		
+		// we compare digits from both ends of the number until we pass the middle
+		// if the number's length is odd then the middle digit is irrelevant
+		while (bigTenPower > smallTenPower)
 		{
-			if (digitsArray[i] != digitsArray[digitsArray.length-i-1]) // mismatch
+			digit1 = (number/smallTenPower)%10; // current right digit
+			digit2 = (number/bigTenPower)%10; // current left digit
+			if (digit1 != digit2) // mismatch
 				return false;
+			smallTenPower *=10;
+			bigTenPower /= 10;
 		}
 		
 		return true; // all couples match
@@ -99,10 +103,11 @@ public class Runner {
 	{
 		int[] newArray = new int[arr1.length + arr2.length + 2]; 
 		int sumArr1=0, sumArr2=0;
+		
 		// default values for smaller sum array and the other array
 		int[] smallerSumArr = arr1, otherArr = arr2; 
 		
-		// get sum of both arrays
+		// compute sum of both arrays
 		for (int i = 0; i < arr1.length; i++) 
 			sumArr1+=arr1[i];
 		
