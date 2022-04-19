@@ -23,10 +23,6 @@ public class Runner {
 		Toy elecToy1 = new ElectricToy("car",LocalDate.of(2020, 1, 1),AgeGroup.C,2,0, kid2);
 		Toy elecToy2 = new ElectricToy("car",LocalDate.now(),AgeGroup.C,2,0, kid2);
 		Toy elecToy3 = new ElectricToy("airplane", LocalDate.now(), AgeGroup.B, 5, 3, kid3);
-		System.out.println(doll1);
-		System.out.println(doll2);
-		System.out.println(elecToy1);
-		System.out.println(elecToy2);
 
 		Toy[] toys = new Toy[5];
 		toys[0] = doll1;
@@ -35,6 +31,7 @@ public class Runner {
 		toys[3] = elecToy2;
 		toys[4] = elecToy3;
 		for (int i = 0; i < toys.length; i++) {
+			toys[i].toString();
 			toys[i].play();	
 		}
 
