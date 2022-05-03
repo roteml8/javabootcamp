@@ -39,18 +39,6 @@ class ColorTest {
 		expected[1] = new short[] {VALUE2,VALUE2,Color.getMinRange()};
 		expected[2] = new short[] {Color.getMinRange(),VALUE2,VALUE1};
 		assertArrayEquals(expected, values);
-		
-//		assertEquals(VALUE1,colors[0].red); 
-//		assertEquals(VALUE1,colors[0].green);
-//		assertEquals(VALUE1,colors[0].blue); 
-//		
-//		assertEquals(VALUE2, colors[1].red);
-//		assertEquals(VALUE2, colors[1].green);
-//		assertEquals(Color.getMinRange(), colors[1].blue);
-//		
-//		assertEquals(Color.getMinRange(), colors[2].red);
-//		assertEquals(VALUE2, colors[2].green);
-//		assertEquals(VALUE1, colors[2].blue);
 
 	}
 	
